@@ -1,0 +1,882 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1b211c">
+<title>五千年文化 · 山西大同</title>
+<meta name="description" content="从桑干河畔的聚落，到北魏平城、辽金西京、明代九边重镇。五座古建、五种味道、一方风土，一页读完大同的五千年。">
+<meta property="og:title" content="五千年文化 · 山西大同">
+<meta property="og:description" content="一半是石头，一半是烟火。">
+<meta property="og:image" content="assets/yungang.jpg">
+<link rel="preload" as="image" href="assets/yungang.jpg">
+<style>
+:root{
+  --paper:#f6f1e7; --paper2:#ece4d4; --food:#f1e8d8;
+  --ink:#1b211c; --body:#4e574c; --muted:#6b7467;
+  --rust:#9c4a2e; --rust-d:#8b3f24; --gold:#b1874a; --moss:#3d4d3f;
+  --line:rgba(27,33,28,.15); --line-l:rgba(246,241,231,.2);
+  --serif:"Songti SC","Noto Serif SC","Source Han Serif SC","STZhongsong","SimSun",serif;
+  --sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,-apple-system,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+section[id]{scroll-margin-top:64px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:15px;line-height:1.9;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+::selection{background:rgba(156,74,46,.2)}
+.wrap{max-width:1240px;margin:0 auto}
+.section{padding:clamp(76px,9vw,132px) clamp(22px,6vw,86px)}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;inset:0 0 auto;z-index:60;height:74px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 clamp(20px,5vw,60px);color:#f7f2e6;transition:height .35s ease,background .35s ease,color .35s ease,border-color .35s;border-bottom:1px solid transparent}
+.nav.solid{height:62px;background:rgba(246,241,231,.93);backdrop-filter:blur(12px);color:var(--ink);border-bottom-color:var(--line)}
+.brand{display:flex;align-items:center;gap:12px;font-family:var(--serif);font-size:15px;letter-spacing:.18em}
+.seal{display:grid;place-items:center;width:30px;height:30px;border:1px solid var(--gold);color:var(--gold);font-size:12px;letter-spacing:0;line-height:1}
+.brand small{font-family:var(--sans);font-size:9px;letter-spacing:.22em;opacity:.65;display:block;margin-top:2px}
+.nav-links{display:flex;gap:clamp(12px,2vw,30px);font-size:11.5px;letter-spacing:.14em}
+.nav-links a{position:relative;opacity:.78;transition:opacity .2s;padding:4px 0}
+.nav-links a:hover,.nav-links a.on{opacity:1}
+.nav-links a.on::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:currentColor}
+.progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--rust);z-index:70;transition:width .1s linear}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:640px;height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#11170f;color:#f7f2e6}
+.hero-media{position:absolute;inset:0;overflow:hidden}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 42%;transform:scale(1.05);will-change:transform}
+.hero::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(10,15,11,.55) 0%,rgba(10,15,11,.05) 32%,rgba(10,15,11,.34) 62%,rgba(9,14,10,.9) 100%),
+  linear-gradient(100deg,rgba(9,14,10,.72) 0%,rgba(9,14,10,.18) 52%,rgba(9,14,10,.28) 100%);pointer-events:none}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 232px;align-items:end;gap:44px;
+  padding:0 clamp(22px,6vw,86px) clamp(116px,14vh,148px)}
+.eyebrow{display:flex;align-items:center;gap:12px;font-size:10.5px;letter-spacing:.3em;color:#e2c08c}
+.eyebrow::before{content:"";width:34px;height:1px;background:currentColor;opacity:.8}
+h1{font-family:var(--serif);font-weight:500;font-size:clamp(56px,10vw,142px);line-height:1.02;letter-spacing:.03em;margin:22px 0 0}
+h1 .accent{color:#e3c08a}
+.hero-sub{font-family:var(--serif);font-size:clamp(17px,1.9vw,24px);letter-spacing:.1em;margin:20px 0 0;color:#f2ead9}
+.hero-copy{margin:20px 0 0;max-width:470px;font-size:13.5px;line-height:2.15;color:rgba(247,242,230,.8)}
+.hero-card{background:rgba(16,22,17,.42);border:1px solid rgba(247,242,230,.22);padding:11px;backdrop-filter:blur(8px)}
+.hero-card img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .6s ease}
+.hero-card:hover img{transform:scale(1.04)}
+.hero-card .hc-cap{padding:11px 3px 3px}
+.hero-card b{display:block;font-family:var(--serif);font-size:14px;letter-spacing:.12em;font-weight:500}
+.hero-card span{display:block;font-size:10px;letter-spacing:.14em;color:rgba(247,242,230,.62);margin-top:4px}
+.hero-bar{position:absolute;z-index:2;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:16px;
+  padding:16px clamp(22px,6vw,86px);border-top:1px solid rgba(247,242,230,.18);font-size:9.5px;letter-spacing:.22em;color:rgba(247,242,230,.66);text-transform:uppercase}
+.hero-bar .scroll{display:inline-flex;align-items:center;gap:8px}
+.hero-bar .scroll::after{content:"";width:1px;height:18px;background:rgba(247,242,230,.55);animation:drop 1.8s infinite}
+@keyframes drop{0%{transform:scaleY(.2);transform-origin:top;opacity:.2}50%{transform:scaleY(1);opacity:1}100%{transform:scaleY(.2);transform-origin:bottom;opacity:.2}}
+
+/* ---------- section head ---------- */
+.head{display:grid;grid-template-columns:1.16fr .84fr;gap:clamp(24px,4vw,56px);align-items:end;margin-bottom:clamp(34px,5vw,66px)}
+.kicker{display:flex;align-items:center;gap:12px;font-size:10.5px;letter-spacing:.28em;color:var(--rust);margin-bottom:20px}
+.kicker::before{content:"";width:32px;height:1px;background:currentColor}
+h2.title{font-family:var(--serif);font-weight:500;font-size:clamp(27px,3.5vw,44px);line-height:1.52;letter-spacing:.03em;margin:0}
+.head-desc{justify-self:end;max-width:390px;font-size:13px;line-height:2.15;color:var(--muted);margin:0}
+
+/* ---------- prologue ---------- */
+.prologue-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:clamp(28px,7vw,88px);align-items:start}
+.lead{font-family:var(--serif);font-size:clamp(18px,2.1vw,27px);line-height:2;letter-spacing:.02em;margin:0}
+.lead em{font-style:normal;color:var(--rust);box-shadow:inset 0 -1px 0 rgba(156,74,46,.35)}
+.side p{font-size:13px;line-height:2.2;color:var(--body);margin:0 0 20px}
+.side p:last-of-type{margin-bottom:0}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-top:1px solid var(--line);margin-top:32px}
+.stat{background:var(--paper);padding:16px 14px 18px}
+.stat b{display:block;font-family:var(--serif);font-weight:500;font-size:23px;color:var(--rust);letter-spacing:.02em}
+.stat span{font-size:10.5px;color:var(--muted);letter-spacing:.04em;line-height:1.7;display:block;margin-top:4px}
+
+/* ---------- timeline ---------- */
+.tl-sec{background:var(--paper2)}
+.tl-tools{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.chip{border:1px solid rgba(27,33,28,.22);border-radius:999px;padding:8px 15px;font-size:10.5px;letter-spacing:.1em;color:var(--body);transition:.2s}
+.chip:hover{background:rgba(27,33,28,.07)}
+.chip.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.tl{position:relative;margin-top:clamp(30px,5vw,54px)}
+.tl::before{content:"";position:absolute;left:50%;top:6px;bottom:26px;width:1px;background:rgba(27,33,28,.25)}
+.tl-item{position:relative;display:grid;grid-template-columns:1fr 1fr;padding-bottom:clamp(26px,3.4vw,42px)}
+.tl-item::after{content:"";position:absolute;left:50%;top:8px;width:9px;height:9px;margin-left:-4.5px;border-radius:50%;background:var(--rust);box-shadow:0 0 0 4px var(--paper2)}
+.tl-item.dim{display:none}
+.tl-item .card{grid-column:1;text-align:right;padding-right:clamp(24px,3.6vw,52px)}
+.tl-item:nth-child(even) .card{grid-column:2;text-align:left;padding-right:0;padding-left:clamp(24px,3.6vw,52px)}
+.era{font-size:10.5px;letter-spacing:.14em;color:var(--rust);margin-bottom:7px}
+.tl-item h3{font-family:var(--serif);font-weight:500;font-size:clamp(17px,1.7vw,20px);letter-spacing:.04em;margin:0 0 8px}
+.tl-item p{font-size:12.5px;line-height:2;color:var(--body);margin:0}
+.tl-note{font-size:10.5px;color:var(--muted);border-top:1px solid var(--line);padding-top:14px;margin-top:6px}
+
+/* ---------- buildings ---------- */
+.build{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(26px,5.5vw,74px);align-items:center;
+  padding:clamp(38px,5vw,62px) 0;border-top:1px solid var(--line)}
+.build:first-of-type{border-top:0;padding-top:0}
+.build.rev .bmedia{order:2}
+.bmedia{position:relative;cursor:zoom-in}
+.bmedia::before{content:"";position:absolute;left:18px;top:18px;right:-18px;bottom:-18px;border:1px solid rgba(156,74,46,.4)}
+.bmedia img{position:relative;width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .7s cubic-bezier(.2,.7,.3,1)}
+.bmedia:hover img{transform:scale(1.035)}
+.bno{position:absolute;z-index:3;left:-4px;top:-34px;font-family:var(--serif);font-size:clamp(44px,5.4vw,74px);line-height:1;color:rgba(27,33,28,.13);pointer-events:none}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:14px}
+.tag{font-size:10px;letter-spacing:.1em;padding:5px 10px;border:1px solid rgba(27,33,28,.24);border-radius:999px;color:var(--muted)}
+.tag.hot{background:var(--rust);border-color:var(--rust);color:#f8f3e7}
+.build h3{font-family:var(--serif);font-weight:500;font-size:clamp(25px,2.9vw,36px);letter-spacing:.05em;margin:0 0 8px}
+.build .sub{font-family:var(--serif);font-size:14.5px;color:var(--rust);letter-spacing:.03em;margin:0 0 18px}
+.build p{font-size:13px;line-height:2.2;color:var(--body);margin:0 0 14px}
+.meta{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin:20px 0 16px}
+.meta div{background:var(--paper);padding:11px 9px}
+.meta b{display:block;font-family:var(--serif);font-weight:500;font-size:15px;letter-spacing:.02em}
+.meta span{display:block;font-size:9.5px;color:var(--muted);margin-top:3px;letter-spacing:.03em}
+.loc{display:flex;gap:9px;align-items:baseline;font-size:11.5px;color:var(--muted);border-top:1px dashed rgba(27,33,28,.22);padding-top:11px}
+.loc b{color:var(--ink);font-weight:500;font-size:10.5px;letter-spacing:.1em}
+.tip{display:flex;gap:9px;margin-top:11px;padding:10px 13px;background:rgba(61,77,63,.07);border-left:2px solid var(--moss);font-size:11.5px;line-height:1.9;color:#3f4a3c}
+.tip b{font-size:10px;letter-spacing:.1em;color:var(--moss);white-space:nowrap;padding-top:2px}
+
+/* ---------- relics ---------- */
+.relics{background:#1d251f;color:#f3ecdc}
+.relics .kicker{color:var(--gold)}
+.relics h2.title{color:#f6f0e1}
+.relics .head-desc{color:#a9b0a3}
+.gal{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.gcard{position:relative;overflow:hidden;cursor:zoom-in;background:#2a332b}
+.gcard img{width:100%;aspect-ratio:3/4;object-fit:cover;opacity:.88;transition:transform .7s,opacity .4s}
+.gcard:hover img{transform:scale(1.06);opacity:1}
+.gcard::after{content:"";position:absolute;inset:auto 0 0;height:58%;background:linear-gradient(0deg,rgba(10,15,11,.9),transparent);pointer-events:none}
+.gcap{position:absolute;z-index:2;left:16px;right:16px;bottom:14px}
+.gcap b{display:block;font-family:var(--serif);font-weight:500;font-size:15px;letter-spacing:.06em}
+.gcap span{display:block;font-size:9.5px;letter-spacing:.1em;color:#c8bda6;margin-top:2px}
+.credit-inline{margin:26px 0 0;font-size:10px;line-height:1.9;color:#8a948a}
+.credit-inline a{color:#b99b6b;border-bottom:1px solid rgba(185,155,107,.4)}
+
+/* ---------- food ---------- */
+.food{background:var(--food)}
+.food-hero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(26px,5vw,64px);align-items:center;margin-bottom:clamp(30px,4vw,52px)}
+.fimg{position:relative;cursor:zoom-in;overflow:hidden}
+.fimg img{width:100%;aspect-ratio:4/5;object-fit:cover;transition:transform .7s}
+.fimg:hover img{transform:scale(1.04)}
+.fimg figcaption{position:absolute;left:0;bottom:0;right:0;padding:16px 18px;font-size:10px;letter-spacing:.14em;color:#f6efe0;
+  background:linear-gradient(0deg,rgba(12,17,12,.85),transparent);letter-spacing:.16em}
+.food-hero h3{font-family:var(--serif);font-weight:500;font-size:clamp(30px,3.6vw,46px);letter-spacing:.06em;margin:10px 0 6px}
+.food-hero .sub{font-family:var(--serif);color:var(--rust);font-size:14px;margin:0 0 16px}
+.food-hero p{font-size:13px;line-height:2.2;color:var(--body);margin:0 0 16px}
+.howto{border-top:1px solid var(--line);padding-top:14px;margin-top:4px}
+.howto b{font-size:10px;letter-spacing:.18em;color:var(--rust);display:block;margin-bottom:7px}
+.howto ul{margin:0;padding-left:16px;font-size:12px;line-height:2;color:var(--body)}
+.food-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2.4vw,28px)}
+.fcard{background:#fbf6ea;border:1px solid rgba(27,33,28,.1);overflow:hidden;transition:transform .3s,box-shadow .3s;display:grid;grid-template-columns:1fr;align-content:start}
+.fcard:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(70,50,28,.12)}
+.fcard .ph{overflow:hidden;cursor:zoom-in}
+.fcard img{width:100%;aspect-ratio:16/10;object-fit:cover;transition:transform .6s}
+.fcard:hover img{transform:scale(1.04)}
+.fcard .tx{padding:16px 18px 20px}
+.fcard h4{font-family:var(--serif);font-weight:500;font-size:20px;letter-spacing:.05em;margin:8px 0 7px;display:flex;align-items:baseline;gap:8px}
+.fcard h4 i{font-style:normal;font-size:10px;letter-spacing:.1em;color:var(--gold)}
+.fcard p{font-size:12px;line-height:2;color:var(--body);margin:0}
+.fnote{font-size:10.5px;color:var(--muted);margin:22px 0 0;line-height:1.9}
+
+/* ---------- folk ---------- */
+.folk{background:#242e26;color:#f3ecdc}
+.folk .kicker{color:var(--gold)}
+.folk h2.title{color:#f6f0e1}
+.folk .head-desc{color:#aab2a5}
+.folk-body{display:grid;grid-template-columns:1.02fr .98fr;gap:clamp(18px,3vw,30px);align-items:stretch}
+.feat{position:relative;overflow:hidden;min-height:440px;cursor:zoom-in}
+.feat img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.82;transition:transform .8s,opacity .4s}
+.feat:hover img{transform:scale(1.05);opacity:.95}
+.feat::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(9,14,10,.94) 4%,rgba(9,14,10,.25) 58%,rgba(9,14,10,.1))}
+.feat .cap{position:absolute;z-index:2;left:clamp(20px,2.6vw,30px);right:clamp(20px,2.6vw,30px);bottom:clamp(20px,2.6vw,28px)}
+.feat .cap b{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(22px,2.4vw,30px);letter-spacing:.05em;margin:6px 0 8px}
+.feat .cap p{font-size:12px;line-height:2;color:#d5d8cc;margin:0;max-width:430px}
+.folk-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.folk-card{background:#2c3730;border:1px solid rgba(243,236,220,.1);padding:18px 17px;transition:background .25s,transform .25s}
+.folk-card:hover{background:#333f36;transform:translateY(-2px)}
+.folk-card .ch{font-family:var(--serif);font-size:26px;color:var(--gold);line-height:1;opacity:.9}
+.folk-card h4{font-family:var(--serif);font-weight:500;font-size:16px;letter-spacing:.05em;margin:10px 0 7px;color:#f5efe0}
+.folk-card p{font-size:11px;line-height:2;color:#b9c0b2;margin:0}
+.folk-foot{margin-top:clamp(22px,3vw,32px);padding-top:18px;border-top:1px solid rgba(243,236,220,.15);font-size:11.5px;line-height:2;color:#aeb5a7}
+.folk-foot b{color:#e5d3ad;font-weight:500}
+
+/* ---------- route ---------- */
+.route{background:var(--paper2)}
+.rt-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(18px,3vw,32px)}
+.rt-card{border:1px solid var(--line);background:var(--paper);padding:clamp(20px,2.6vw,28px)}
+.rt-card .d{font-family:var(--serif);font-size:13px;letter-spacing:.2em;color:var(--rust)}
+.rt-card h3{font-family:var(--serif);font-weight:500;font-size:20px;margin:8px 0 14px;letter-spacing:.04em}
+.rt-card ol{margin:0;padding-left:18px;font-size:12.5px;line-height:2.1;color:var(--body)}
+.rt-card ol b{color:var(--ink);font-weight:500}
+.rt-note{font-size:11.5px;color:var(--muted);margin-top:18px;line-height:2}
+
+/* ---------- closing ---------- */
+.closing{position:relative;overflow:hidden;background:var(--rust-d);color:#f8f2e4;text-align:center;padding:clamp(64px,8vw,104px) 22px}
+.closing::before,.closing::after{content:"";position:absolute;border:1px solid rgba(248,242,228,.16);border-radius:50%}
+.closing::before{width:480px;height:480px;left:-250px;top:-180px}
+.closing::after{width:620px;height:620px;right:-280px;bottom:-320px}
+.closing .kicker{justify-content:center;color:#ecc898;margin-bottom:18px}
+.closing .kicker::after{content:"";width:32px;height:1px;background:currentColor}
+.closing h2{position:relative;font-family:var(--serif);font-weight:400;font-size:clamp(26px,3.6vw,44px);line-height:1.7;letter-spacing:.08em;margin:0 auto;max-width:760px}
+.closing p{position:relative;font-size:12.5px;line-height:2.2;color:rgba(248,242,228,.8);margin:20px auto 0;max-width:520px}
+.closing .eval{position:relative;margin:34px auto 0;padding-top:24px;font-family:var(--serif);font-size:clamp(16px,1.7vw,20px);letter-spacing:.3em;color:#f7e8cf;max-width:520px}
+.closing .eval::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:48px;height:1px;background:rgba(248,242,228,.5)}
+
+/* ---------- footer ---------- */
+footer{background:#161d18;color:#94a094;padding:clamp(30px,4vw,44px) clamp(22px,6vw,86px);font-size:10.5px;line-height:2}
+.foot-top{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid rgba(246,241,231,.12)}
+.foot-top .f-brand{font-family:var(--serif);font-size:14px;letter-spacing:.2em;color:#e8dfc9}
+.foot-cols{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(20px,4vw,48px);padding-top:18px}
+footer a{color:#c1a274;border-bottom:1px solid rgba(193,162,116,.35)}
+footer strong{color:#d8d0bb;font-weight:500;letter-spacing:.1em;font-size:10px;display:block;margin-bottom:6px}
+
+/* ---------- lightbox / back to top ---------- */
+.lb{position:fixed;inset:0;z-index:200;display:none;place-items:center;background:rgba(9,12,9,.95);padding:clamp(14px,4vw,48px)}
+.lb.on{display:grid;animation:fade .25s ease}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+.lb img{max-width:100%;max-height:82vh;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.lb-cap{color:#e8e0cd;font-size:11.5px;letter-spacing:.1em;text-align:center;margin-top:14px;line-height:1.9;max-width:760px}
+.lb-cap small{display:block;color:#8f998c;font-size:9.5px;margin-top:4px;letter-spacing:.06em}
+.lb-close{position:absolute;top:18px;right:20px;width:40px;height:40px;border:1px solid rgba(240,233,216,.3);color:#efe8d6;font-size:16px;border-radius:50%;display:grid;place-items:center;transition:.2s}
+.lb-close:hover{background:rgba(240,233,216,.14)}
+.top{position:fixed;right:22px;bottom:22px;z-index:80;width:44px;height:44px;border-radius:50%;background:rgba(27,33,28,.82);color:#f6f1e7;
+  display:grid;place-items:center;font-size:15px;opacity:0;pointer-events:none;transition:.3s;backdrop-filter:blur(6px)}
+.top.on{opacity:1;pointer-events:auto}
+
+/* ---------- reveal ---------- */
+.rv{opacity:0;transform:translateY(20px);transition:opacity .75s cubic-bezier(.2,.7,.3,1),transform .75s cubic-bezier(.2,.7,.3,1)}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- responsive ---------- */
+@media (max-width:1024px){
+  .hero-inner{grid-template-columns:1fr;gap:26px;padding-bottom:110px}
+  .hero-card{display:none}
+  .head{grid-template-columns:1fr;gap:16px}
+  .head-desc{justify-self:start}
+  .prologue-grid,.build,.food-hero,.folk-body,.rt-grid{grid-template-columns:1fr;gap:28px}
+  .build.rev .bmedia{order:0}
+  .build .bno{top:-26px}
+  .gal{grid-template-columns:1fr 1fr}
+  .feat{min-height:360px}
+  .foot-cols{grid-template-columns:1fr}
+  .tl::before{left:9px}
+  .tl-item{grid-template-columns:1fr}
+  .tl-item::after{left:9px;margin-left:-4.5px}
+  .tl-item .card,.tl-item:nth-child(even) .card{grid-column:1;text-align:left;padding-left:34px;padding-right:0}
+}
+@media (max-width:640px){
+  .nav{height:62px;padding:0 18px}
+  .nav-links{font-size:9.5px;gap:11px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;max-width:62%}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{white-space:nowrap}
+  .brand{font-size:13px;letter-spacing:.12em;gap:9px}
+  .brand small{display:none}
+  h1{font-size:clamp(52px,16vw,84px)}
+  .hero-bar{font-size:8.5px;letter-spacing:.14em;padding:12px 22px}
+  .hero-bar span:nth-child(2){display:none}
+  .meta{grid-template-columns:1fr 1fr}
+  .food-grid{grid-template-columns:1fr}
+  .folk-grid{grid-template-columns:1fr 1fr}
+  .gcap{left:11px;right:11px;bottom:10px}
+  .gcap b{font-size:13px}
+  .stats{grid-template-columns:1fr}
+  .closing::before,.closing::after{display:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none;transition:none}
+  .hero-media img{transform:none}
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top">
+    <span class="seal">同</span>
+    <span>山西 · 大同<small>DATONG · SHANXI</small></span>
+  </a>
+  <nav class="nav-links" aria-label="页面导航">
+    <a href="#prologue">序章</a>
+    <a href="#timeline">五千年</a>
+    <a href="#buildings">五大古建</a>
+    <a href="#relics">遗珍</a>
+    <a href="#food">味道</a>
+    <a href="#folk">风土</a>
+  </nav>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-media"><img src="assets/yungang.jpg" alt="云冈石窟第20窟露天大佛，砂岩上雕刻的北魏佛像在午后阳光里" fetchpriority="high"></div>
+    <div class="hero-inner">
+      <div>
+        <div class="eyebrow">SHANXI · DATONG · 40°N</div>
+        <h1>五千年<br><span class="accent">文化</span></h1>
+        <p class="hero-sub">一半是石头，一半是烟火</p>
+        <p class="hero-copy">桑干河畔的第一堆火，白登山上的一场大雪，北魏都城的十万锤凿，城墙根下的一碗热汤——都还在这座城里。</p>
+      </div>
+      <figure class="hero-card" data-lb="assets/xuankong.jpg" data-cap="悬空寺 · 恒山金龙峡" data-credit="摄影 Charlie fong / Wikimedia Commons, CC BY-SA 4.0">
+        <img src="assets/xuankong.jpg" alt="悬空寺贴在恒山崖壁上，木构殿阁由横梁插入岩体支撑" loading="lazy">
+        <div class="hc-cap"><b>悬空寺</b><span>恒山金龙峡 · 建于北魏</span></div>
+      </figure>
+    </div>
+    <div class="hero-bar">
+      <span>山西省 · 大同市</span>
+      <span class="scroll">向下阅读</span>
+      <span>东经 113° · 北纬 40°</span>
+    </div>
+  </section>
+
+  <!-- PROLOGUE -->
+  <section class="section" id="prologue">
+    <div class="wrap">
+      <div class="head rv">
+        <div>
+          <div class="kicker">01 / 序章</div>
+          <h2 class="title">五千年不是一句话，<br>是一层一层压下来的土。</h2>
+        </div>
+        <p class="head-desc">大同的"五千年"，要从桑干河两岸的新石器聚落算起。此后这里被反复改写：赵武灵王在此胡服骑射，刘邦在白登山被围七天，拓跋鲜卑把国都搬来，辽金把它称作西京，明代把它修成九边里最硬的一座城。</p>
+      </div>
+      <div class="prologue-grid rv">
+        <p class="lead">今天的城墙是明代的样子，城里却压着北魏的宫殿、辽金的寺院；往西十七公里，武州山的砂岩上，<em>五万一千尊佛</em>已经坐了一千五百多年。读大同，别只数景点，看它的时间层。</p>
+        <div class="side">
+          <p>大同古称平城。旧石器时代晚期的"许家窑人"在阳高一带留下石球与刮削器；新石器时代，河谷台地上出现农业聚落；战国置郡，秦汉筑塞，城市逐渐长成北方门户。</p>
+          <p>公元 398 年，北魏道武帝拓跋珪迁都平城，此后九十六年，这里是中国北方的政治与信仰中心。迁都洛阳之后，大同没有退场——辽金以它为西京，明代以它为军事重镇，清代以它为晋北商埠。</p>
+          <div class="stats">
+            <div class="stat"><b>约 5000 年</b><span>桑干河流域的文明层积</span></div>
+            <div class="stat"><b>96 年</b><span>北魏建都平城（398—494）</span></div>
+            <div class="stat"><b>51000+</b><span>云冈石窟现存造像</span></div>
+            <div class="stat"><b>1982</b><span>首批国家历史文化名城</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="section tl-sec" id="timeline">
+    <div class="wrap">
+      <div class="head rv">
+        <div>
+          <div class="kicker">02 / 时间轴</div>
+          <h2 class="title">从河谷聚落，<br>走到边塞古城。</h2>
+        </div>
+        <div>
+          <p class="head-desc" style="margin-bottom:18px">八个节点，串起大同的五千年。点下面的按钮，可以只看某一段。</p>
+          <div class="tl-tools" role="group" aria-label="筛选时间轴">
+            <button class="chip on" data-era="all">全部</button>
+            <button class="chip" data-era="early">远古 · 秦汉</button>
+            <button class="chip" data-era="mid">北魏 · 辽金</button>
+            <button class="chip" data-era="late">明清 · 至今</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="tl rv" id="tl">
+        <article class="tl-item" data-era="early">
+          <div class="card"><div class="era">约 10 万年前</div><h3>许家窑人</h3><p>阳高县许家窑遗址出土石球、刮削器与人类化石，是这片土地上最早的居民痕迹之一。旧石器时代晚期的猎人，已经会做石球去打猎。</p></div>
+        </article>
+        <article class="tl-item" data-era="early">
+          <div class="card"><div class="era">约公元前 3000 年</div><h3>桑干河畔的聚落</h3><p>河谷台地上出现定居农业，磨制石器、彩陶、半地穴式房屋陆续出土。所谓"五千年文化"，起点就在这里。</p></div>
+        </article>
+        <article class="tl-item" data-era="early">
+          <div class="card"><div class="era">战国</div><h3>胡服骑射与雁门郡</h3><p>赵武灵王北破林胡、楼烦，设雁门郡、代郡。中原的农耕与草原的骑射，第一次被同一条界线连在一起。</p></div>
+        </article>
+        <article class="tl-item" data-era="early">
+          <div class="card"><div class="era">公元前 200 年</div><h3>白登之围</h3><p>汉高祖刘邦北征匈奴，被围平城白登山七日，脱围后改行和亲。大同自此成为中原王朝的北大门。</p></div>
+        </article>
+        <article class="tl-item" data-era="mid">
+          <div class="card"><div class="era">398—494 年</div><h3>北魏平城</h3><p>拓跋珪迁都平城，历六帝九十六年。昙曜在武州山开五窟，云冈石窟由此诞生；当时的平城，是北方中国最国际化的城市之一。</p></div>
+        </article>
+        <article class="tl-item" data-era="mid">
+          <div class="card"><div class="era">1044—1234 年</div><h3>辽金西京</h3><p>辽设西京大同府，金代沿用。华严寺、善化寺在这一时期营建，辽金木构、彩塑与壁画留存至今。</p></div>
+        </article>
+        <article class="tl-item" data-era="late">
+          <div class="card"><div class="era">1372 年</div><h3>明代九边重镇</h3><p>大将军徐达在旧城基础上增筑城墙，周长七公里余，四门、瓮城、角楼齐备。大同镇扼守蒙古入塞要道，有"大同士马甲天下"之说。</p></div>
+        </article>
+        <article class="tl-item" data-era="late">
+          <div class="card"><div class="era">1982 年至今</div><h3>重新睁开眼睛的古城</h3><p>列入首批国家历史文化名城；2001 年云冈石窟成为世界文化遗产；2008 年起城墙、华严寺、代王府片区陆续修复，老城里重新住进了人。</p></div>
+        </article>
+      </div>
+      <p class="tl-note">※ 年代取通行说法，史前遗存年代以考古测年为准；部分早期纪年为概数。</p>
+    </div>
+  </section>
+
+  <!-- BUILDINGS -->
+  <section class="section" id="buildings">
+    <div class="wrap">
+      <div class="head rv">
+        <div>
+          <div class="kicker">03 / 五座古建</div>
+          <h2 class="title">石头、木头与土，<br>替这座城市记着账。</h2>
+        </div>
+        <p class="head-desc">云冈凿在砂岩上，悬空寺钉在崖壁上，木塔靠斗拱咬合，华严寺藏着辽代的彩塑，城墙是夯土包砖的防御工事。五种材料，五个朝代，五种活法。</p>
+      </div>
+
+      <!-- 01 -->
+      <article class="build rv">
+        <figure class="bmedia" data-lb="assets/yungang.jpg" data-cap="云冈石窟 · 第20窟露天大佛" data-credit="摄影 Felix Andrews / Wikimedia Commons, CC BY-SA 3.0">
+          <span class="bno">01</span>
+          <img src="assets/yungang.jpg" alt="云冈石窟第20窟露天大佛，两侧崖壁上布满小龛造像" loading="lazy">
+        </figure>
+        <div>
+          <div class="tags"><span class="tag hot">世界文化遗产</span><span class="tag">北魏</span><span class="tag">砂岩造像</span></div>
+          <h3>云冈石窟</h3>
+          <p class="sub">把一座王朝的审美，刻进武州山</p>
+          <p>公元 460 年，高僧昙曜在武州山南麓开凿五座大窟，即"昙曜五窟"。此后六十余年，皇室与僧俗接力经营，留下主要洞窟 45 个、窟龛 252 个、造像 51000 余尊。</p>
+          <p>早期的佛像雄浑壮硕，带犍陀罗与秣菟罗的影子；中期出现褒衣博带的中原式样，面容清瘦；晚期转向民间化的小龛。一次开凿，就是半个世纪的艺术演变。</p>
+          <div class="meta">
+            <div><b>460 年</b><span>始凿</span></div>
+            <div><b>45 个</b><span>主要洞窟</span></div>
+            <div><b>51000+</b><span>现存造像</span></div>
+            <div><b>13.7 米</b><span>第20窟大佛</span></div>
+          </div>
+          <div class="loc"><b>位置</b><span>大同市西郊 17 公里，武州山南麓</span></div>
+          <div class="tip"><b>看点</b><span>第20窟露天大佛是标志；第6窟中心塔柱与佛传浮雕、第5窟 17 米坐佛，值得单独留时间。</span></div>
+        </div>
+      </article>
+
+      <!-- 02 -->
+      <article class="build rev rv">
+        <figure class="bmedia" data-lb="assets/xuankong.jpg" data-cap="悬空寺 · 恒山金龙峡翠屏峰" data-credit="摄影 Charlie fong / Wikimedia Commons, CC BY-SA 4.0">
+          <span class="bno">02</span>
+          <img src="assets/xuankong.jpg" alt="悬空寺的木构殿阁附着在近乎垂直的崖壁上，下方有铁杉木柱支撑" loading="lazy">
+        </figure>
+        <div>
+          <div class="tags"><span class="tag hot">三教合一</span><span class="tag">北魏</span><span class="tag">崖壁木构</span></div>
+          <h3>悬空寺</h3>
+          <p class="sub">四十间殿阁，挂在九十度的崖壁上</p>
+          <p>寺贴着恒山金龙峡西侧的翠屏峰修，距谷底约五十米。木构以插入岩壁的横梁为基，梁下立柱多为装饰，真正吃力的是嵌进砂岩的横木。</p>
+          <p>寺内三教殿同时供奉佛、道、儒，是罕见的"三教合一"格局。2010 年，它被美国《时代》周刊列入"世界十大奇险建筑"。</p>
+          <div class="meta">
+            <div><b>约 491 年</b><span>始建（北魏）</span></div>
+            <div><b>40 间</b><span>现存殿阁</span></div>
+            <div><b>约 50 米</b><span>距谷底高度</span></div>
+            <div><b>1500+ 年</b><span>香火未断</span></div>
+          </div>
+          <div class="loc"><b>位置</b><span>大同市浑源县，恒山金龙峡西侧</span></div>
+          <div class="tip"><b>提示</b><span>登寺限流，旺季建议八点前到；台阶窄、峡谷风大，穿防滑的鞋。</span></div>
+        </div>
+      </article>
+
+      <!-- 03 -->
+      <article class="build rv">
+        <figure class="bmedia" data-lb="assets/yingxian.jpg" data-cap="应县木塔（佛宫寺释迦塔）· 辽清宁二年（1056）" data-credit="摄影 Charlie fong / Wikimedia Commons, CC BY-SA 4.0">
+          <span class="bno">03</span>
+          <img src="assets/yingxian.jpg" alt="应县木塔全景，五层六檐的木塔立在县城中，周围是低矮民居" loading="lazy">
+        </figure>
+        <div>
+          <div class="tags"><span class="tag hot">世界最高木塔</span><span class="tag">辽</span><span class="tag">纯木无钉</span></div>
+          <h3>应县木塔</h3>
+          <p class="sub">六十七米，没用一颗钉子</p>
+          <p>佛宫寺释迦塔，俗称应县木塔，辽清宁二年（1056 年）建成。塔高 67.31 米，外观五层六檐，内部实为九层，所谓"明五暗四"。</p>
+          <p>整座塔靠斗拱与梁枋互相咬合，共用 54 种斗拱，无钉无铆，历经多次地震仍然站着。它与比萨斜塔、埃菲尔铁塔并称"世界三大奇塔"，是常见说法。</p>
+          <div class="meta">
+            <div><b>67.31 米</b><span>通高</span></div>
+            <div><b>54 种</b><span>斗拱形制</span></div>
+            <div><b>9 层</b><span>明五暗四</span></div>
+            <div><b>1056 年</b><span>建成</span></div>
+          </div>
+          <div class="loc"><b>位置</b><span>朔州市应县，距大同市区约 70 公里</span></div>
+          <div class="tip"><b>提示</b><span>塔身已有倾斜，二层以上不开放；站在塔下仰看斗拱，比登塔更震撼。应县属朔州，通常与大同连成一日线。</span></div>
+        </div>
+      </article>
+
+      <!-- 04 -->
+      <article class="build rev rv">
+        <figure class="bmedia" data-lb="assets/huayan.jpg" data-cap="华严寺 · 殿内辽金彩塑与彩绘平棊" data-credit="摄影 Dudva / Wikimedia Commons, CC0">
+          <span class="bno">04</span>
+          <img src="assets/huayan.jpg" alt="华严寺殿内并列的金身佛像，背光雕饰繁复，顶部是彩绘天花板" loading="lazy">
+        </figure>
+        <div>
+          <div class="tags"><span class="tag hot">辽代彩塑</span><span class="tag">辽金木构</span><span class="tag">海内孤品</span></div>
+          <h3>华严寺</h3>
+          <p class="sub">一座寺院，两件"海内孤品"</p>
+          <p>华严寺依《华严经》得名，分上、下两寺。上寺大雄宝殿为金天眷三年（1140 年）重建，面阔九间、进深五间，是我国现存最大的辽金佛殿之一。</p>
+          <p>下寺薄伽教藏殿内保存辽代彩塑 31 尊，其中一尊合掌露齿的菩萨，笑容浅浅、身姿微侧，被称作"东方维纳斯"。殿内还有按辽代建筑缩制的天宫楼阁壁藏，是现存极珍贵的辽代小木作标本。</p>
+          <div class="meta">
+            <div><b>1038 年</b><span>薄伽教藏殿</span></div>
+            <div><b>九间</b><span>大雄宝殿面阔</span></div>
+            <div><b>31 尊</b><span>辽代彩塑</span></div>
+            <div><b>1140 年</b><span>大殿重建</span></div>
+          </div>
+          <div class="loc"><b>位置</b><span>大同古城内下寺坡街</span></div>
+          <div class="tip"><b>提示</b><span>上午光线斜进殿内，彩塑最好看；殿内禁用闪光灯。逛完可顺路去善化寺，两寺相距不到两公里。</span></div>
+        </div>
+      </article>
+
+      <!-- 05 -->
+      <article class="build rv">
+        <figure class="bmedia" data-lb="assets/wall.jpg" data-cap="大同古城墙 · 永泰门段与护城河" data-credit="摄影 xiquinhosilva / Wikimedia Commons, CC BY 4.0">
+          <span class="bno">05</span>
+          <img src="assets/wall.jpg" alt="大同古城墙与城楼、护城河，城墙下是绿化带和步道" loading="lazy">
+        </figure>
+        <div>
+          <div class="tags"><span class="tag hot">九边重镇</span><span class="tag">明</span><span class="tag">夯土包砖</span></div>
+          <h3>大同古城墙</h3>
+          <p class="sub">七公里城圈，围住一座活的古城</p>
+          <p>明洪武五年（1372 年），大将军徐达在辽金旧城基础上增筑大同城。城墙周长约 7.24 公里，高 14 米，设和阳、永泰、清远、武定四门，门外有瓮城、月城，城上列角楼、望楼、箭楼。</p>
+          <p>明代大同是"九边"中最靠近草原的一镇，有"大同士马甲天下"之说。2008 年起城墙、护城河与城内街巷陆续修复，如今可以从永泰门登城，骑车绕一整圈。</p>
+          <div class="meta">
+            <div><b>7.24 公里</b><span>城墙周长</span></div>
+            <div><b>14 米</b><span>墙体高度</span></div>
+            <div><b>4 座</b><span>主城门</span></div>
+            <div><b>1372 年</b><span>徐达增筑</span></div>
+          </div>
+          <div class="loc"><b>位置</b><span>大同古城中心，永泰门、和阳门均可登城</span></div>
+          <div class="tip"><b>提示</b><span>日落前半小时登城最好，能看城墙与城内屋脊连成一片；夜里亮灯，适合拍长曝光。</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- RELICS -->
+  <section class="section relics" id="relics">
+    <div class="wrap">
+      <div class="head rv">
+        <div>
+          <div class="kicker">04 / 还有这些</div>
+          <h2 class="title">走完五座，<br>再补四眼。</h2>
+        </div>
+        <p class="head-desc">大同的好东西太密。九龙壁是明代藩府的照壁，善化寺的辽金殿宇比华严寺更安静，云冈的窟内满壁小佛，华严寺的菩萨笑得像真人。点开看图。</p>
+      </div>
+      <div class="gal rv">
+        <figure class="gcard" data-lb="assets/jiulongbi.jpg" data-cap="九龙壁 · 明洪武二十五年（1392），长 45.5 米，现存规模最大的九龙壁" data-credit="摄影 xiquinhosilva / Wikimedia Commons, CC BY 2.0">
+          <img src="assets/jiulongbi.jpg" alt="大同九龙壁，琉璃烧制的九条龙在照壁上翻腾" loading="lazy">
+          <figcaption class="gcap"><b>九龙壁</b><span>明 · 1392 · 代王府照壁</span></figcaption>
+        </figure>
+        <figure class="gcard" data-lb="assets/shanhua.jpg" data-cap="善化寺 · 辽金建筑群，大雄宝殿与三圣殿" data-credit="摄影 Zhangzhugang / Wikimedia Commons, CC BY-SA 3.0">
+          <img src="assets/shanhua.jpg" alt="善化寺院内殿宇与古树，屋顶铺灰瓦" loading="lazy">
+          <figcaption class="gcap"><b>善化寺</b><span>辽金 · 现存最完整的辽金寺院</span></figcaption>
+        </figure>
+        <figure class="gcard" data-lb="assets/yungang-2.jpg" data-cap="云冈石窟窟内 · 满壁小龛与造像" data-credit="摄影 Dudva / Wikimedia Commons, CC0">
+          <img src="assets/yungang-2.jpg" alt="云冈石窟洞窟内部，岩壁上密布小佛龛与造像" loading="lazy">
+          <figcaption class="gcap"><b>窟内千佛</b><span>北魏 · 一壁之间千尊</span></figcaption>
+        </figure>
+        <figure class="gcard" data-lb="assets/huayan-2.jpg" data-cap="华严寺 · 薄伽教藏殿辽代彩塑" data-credit="摄影 Dudva / Wikimedia Commons, CC0">
+          <img src="assets/huayan-2.jpg" alt="华严寺殿内辽代彩塑菩萨像，身姿微侧" loading="lazy">
+          <figcaption class="gcap"><b>辽代彩塑</b><span>辽 · 合掌露齿菩萨</span></figcaption>
+        </figure>
+      </div>
+      <p class="credit-inline">照片均来自 Wikimedia Commons，遵循 CC 授权，点击图片可查看摄影者与授权信息；另可对照 <a href="https://www.yungang.org/" target="_blank" rel="noopener">云冈研究院</a>、<a href="https://whc.unesco.org/zh/list/1039" target="_blank" rel="noopener">UNESCO 云冈石窟</a> 的公开资料。</p>
+    </div>
+  </section>
+
+  <!-- FOOD -->
+  <section class="section food" id="food">
+    <div class="wrap">
+      <div class="head rv">
+        <div>
+          <div class="kicker">05 / 五种味道</div>
+          <h2 class="title">面、羊、杂粮，<br>晋北人的三件宝。</h2>
+        </div>
+        <p class="head-desc">干燥、寒冷、日照足，长出莜麦和土豆；紧邻草原，羊肉便宜又好吃。大同的餐桌就是地理写出来的：一碗面、一碗汤、一笼烧麦、一卷莜面、一盘凉粉。</p>
+      </div>
+
+      <div class="food-hero rv">
+        <figure class="fimg" data-lb="assets/food-daoxiao.jpg" data-cap="刀削面 · 大同街头，师傅正把面叶削进滚锅" data-credit="摄影 齐健 / Wikimedia Commons, CC BY 2.0">
+          <img src="assets/food-daoxiao.jpg" alt="面馆门口，厨师托着面团用弧形刀片削面，面叶飞进沸水锅" loading="lazy">
+          <figcaption>01 / 面食 · 大同街头</figcaption>
+        </figure>
+        <div>
+          <div class="tags"><span class="tag hot">招牌</span><span class="tag">面食</span><span class="tag">早中晚都能吃</span></div>
+          <h3>刀削面</h3>
+          <p class="sub">一把刀，削出柳叶一样的面</p>
+          <p>面团要揉得硬。师傅左手托面，右手一片弧形刀，一刀接一刀，面叶中厚边薄、形如柳叶，直接飞进滚水。捞起来浇肉臊子，撒香菜，再淋一勺老陈醋。</p>
+          <p>大同人吃面不看钟点：早上出门一碗，中午办事一碗，晚上收工还来一碗。面馆门口那口大锅和"当当"的削面声，就是这座城的背景音。</p>
+          <div class="howto">
+            <b>怎么吃</b>
+            <ul>
+              <li>点"小碗加肉"，臊子给得厚</li>
+              <li>醋一定是山西老陈醋，别用白醋</li>
+              <li>配卤蛋、豆腐干，或者一瓣生蒜</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="food-grid rv">
+        <article class="fcard">
+          <div class="ph" data-lb="assets/food-yangza.jpg" data-cap="羊杂割 · 羊杂配粉丝，撒香菜与辣椒" data-credit="摄影 AddisWang / Wikimedia Commons, CC BY-SA 3.0">
+            <img src="assets/food-yangza.jpg" alt="一碗羊杂汤，汤里有粉丝、羊杂碎和香菜" loading="lazy">
+          </div>
+          <div class="tx">
+            <span class="tag">02 / 汤食 · 早餐</span>
+            <h4>羊杂割 <i>YANGZA</i></h4>
+            <p>羊头、心、肝、肺、肚、肠收拾干净，和粉条同煮，葱花香菜辣椒油一冲。天不亮就有人排队，一碗汤下肚，从胃暖到耳朵。相传"杂割"之名起于元代，实情已难考，但这碗汤在大同的早晨排了几十年的队。</p>
+          </div>
+        </article>
+
+        <article class="fcard">
+          <div class="ph" data-lb="assets/food-shaomai.jpg" data-cap="羊肉烧麦 · 皮薄如纸，收口如花" data-credit="摄影 N509FZ / Wikimedia Commons, CC BY-SA 4.0">
+            <img src="assets/food-shaomai.jpg" alt="竹笼里一笼刚蒸好的烧麦，皮薄透亮，收口呈花瓣状" loading="lazy">
+          </div>
+          <div class="tx">
+            <span class="tag">03 / 点心 · 待客</span>
+            <h4>百花烧麦 <i>SHAOMAI</i></h4>
+            <p>烫面擀出荷叶边，包羊肉大葱馅，收口一捏像朵花，蒸熟后皮子透亮、褶子立着。相传清末凤临阁以此闻名，1900 年慈禧西逃路过大同，尝后赐名"百花烧麦"。传说真假难说，一笼八个、蘸醋配砖茶，确实是老大同的待客方式。</p>
+          </div>
+        </article>
+
+        <article class="fcard">
+          <div class="ph" data-lb="assets/food-youmian.jpg" data-cap="莜面栲栳栳 · 卷成小筒立在笼里，配羊肉蘑菇卤" data-credit="摄影 Popolon / Wikimedia Commons, CC BY-SA 4.0">
+            <img src="assets/food-youmian.jpg" alt="蒸笼里一圈圈竖立的莜面卷，旁边是一锅蘸汤" loading="lazy">
+          </div>
+          <div class="tx">
+            <span class="tag">04 / 杂粮 · 蒸食</span>
+            <h4>莜面栲栳栳 <i>YOUMIAN</i></h4>
+            <p>莜麦炒熟磨面，开水和团，揪一小块在石板上推成薄片，食指一绕，卷成中空的筒，立在笼里像蜂窝。蒸十分钟，蘸羊肉蘑菇卤或酸辣汁。雁北老话说："四十里莜面三十里糕，十里荞面饿断腰"——说的就是它顶饱。</p>
+          </div>
+        </article>
+
+        <article class="fcard">
+          <div class="ph" data-lb="assets/food-liangfen.jpg" data-cap="凉粉 · 切条后浇醋、辣椒油与蒜水" data-credit="摄影 N509FZ / Wikimedia Commons, CC BY-SA 4.0">
+            <img src="assets/food-liangfen.jpg" alt="一盘切条的凉粉，浇了红亮的辣椒油和芝麻" loading="lazy">
+          </div>
+          <div class="tx">
+            <span class="tag">05 / 小吃 · 解暑</span>
+            <h4>浑源凉粉 <i>LIANGFEN</i></h4>
+            <p>土豆淀粉熬成糊，晾凉凝成块，切条，浇醋、辣椒油、蒜水，撒上莲花豆和豆腐干。入口滑、嚼着韧，酸辣一起上头。浑源县城里老店最多，配一个熏鸡蛋正好；夏天在恒山脚下吃，风一吹更凉。</p>
+          </div>
+        </article>
+      </div>
+      <p class="fnote">※ 图为食物类型示意（部分拍摄于外地餐馆），非大同具体店家出品；口味与做法各家不同，仅供参考。</p>
+    </div>
+  </section>
+
+  <!-- FOLK -->
+  <section class="section folk" id="folk">
+    <div class="wrap">
+      <div class="head rv">
+        <div>
+          <div class="kicker">06 / 风土人情</div>
+          <h2 class="title">城墙之外，<br>日子过得热闹又扎实。</h2>
+        </div>
+        <p class="head-desc">大同是移民城市：戌卒、商旅、僧侣、匠人一代代迁来，把各地的腔调、手艺和口味都留下了。到今天，这些还在正月里响，在窗上红，在铜锅里滚。</p>
+      </div>
+      <div class="folk-body rv">
+        <figure class="feat" data-lb="assets/folk-shehuo.jpg" data-cap="山西社火 · 正月里的秧歌与锣鼓（省内民俗，示意）" data-credit="摄影 Gene / Wikimedia Commons, CC BY 2.5">
+          <img src="assets/folk-shehuo.jpg" alt="山西民间社火表演，彩衣队伍在广场上敲锣打鼓" loading="lazy">
+          <div class="cap">
+            <div class="era" style="color:#e2c08c">岁时 · 正月</div>
+            <b>锣鼓一响，全城出动</b>
+            <p>正月十五前后，古城街巷和县城广场上天天有场：挠阁把孩子架到大人的肩头，高跷、旱船、舞龙、秧歌一队接一队。看的人挤在墙根，被架着的孩子常常在半空打瞌睡。</p>
+          </div>
+        </figure>
+        <div class="folk-grid">
+          <article class="folk-card"><div class="ch">唱</div><h4>耍孩儿</h4><p>又叫"咳咳腔"，用后嗓发声，粗粝里带苍凉。一个剧种靠一个剧团撑着，被叫作"天下独一团"，2006 年列入首批国家级非遗。</p></article>
+          <article class="folk-card"><div class="ch">剪</div><h4>广灵剪纸</h4><p>刻刀在宣纸上一刀一刀刻出人物花鸟，再手工染色，颜色浓得像年画。2009 年作为中国剪纸的一部分，列入联合国教科文组织人类非遗名录。</p></article>
+          <article class="folk-card"><div class="ch">铸</div><h4>大同铜器</h4><p>铜火锅、铜壶、铜盆，靠手工锻打和錾花成形。老城曾有"铜匠街"，如今这门手艺是国家级非遗，一口铜火锅仍是冬天涮羊肉的主角。</p></article>
+          <article class="folk-card"><div class="ch">闹</div><h4>挠阁社火</h4><p>铁架把孩子固定在高处，妆成戏曲人物，随着大人的步子上下颤。看的人替他们捏一把汗，被架着的孩子却在打瞌睡。</p></article>
+          <article class="folk-card"><div class="ch">庙</div><h4>恒山庙会</h4><p>农历四月初八，浑源恒山脚下赶庙会。香客上山，山脚摆摊，凉粉、油糕、面塑一路吃过去，是本地人一年一次的"爬山加赶集"。</p></article>
+          <article class="folk-card"><div class="ch">话</div><h4>大同方言</h4><p>属晋语大包片，入声短促。"咋啦""圪蹴""nia"这些词一出口，本地人立刻知道是自己人；桌上劝酒的豪爽，也是这套话里的。</p></article>
+        </div>
+      </div>
+      <p class="folk-foot"><b>一句话概括这方水土：</b>边塞的直爽、农牧交汇的包容、匠人对细节的执拗，加上节庆里邻里共享的热闹——四样凑在一起，就是大同人的脾气。</p>
+    </div>
+  </section>
+
+  <!-- ROUTE -->
+  <section class="section route" id="route">
+    <div class="wrap">
+      <div class="head rv">
+        <div>
+          <div class="kicker">07 / 怎么走</div>
+          <h2 class="title">两天，把五千年<br>走成一条线。</h2>
+        </div>
+        <p class="head-desc">景点分散在东、西、南三个方向，按"城里—西郊—东南"排，能少绕路。以下按自驾或包车写，公共交通需多留半天。</p>
+      </div>
+      <div class="rt-grid rv">
+        <div class="rt-card">
+          <div class="d">DAY 01</div>
+          <h3>云冈 + 古城</h3>
+          <ol>
+            <li><b>上午</b> 云冈石窟（市区西 17 公里，留 3 小时，请讲解或租语音导览）</li>
+            <li><b>午后</b> 回城，华严寺 → 善化寺 → 九龙壁，步行可达</li>
+            <li><b>日落</b> 永泰门登城墙，绕到和阳门看灯</li>
+            <li><b>晚上</b> 鼓楼东西街吃刀削面，顺路喝一碗羊杂</li>
+          </ol>
+        </div>
+        <div class="rt-card">
+          <div class="d">DAY 02</div>
+          <h3>悬空寺 + 恒山 + 木塔</h3>
+          <ol>
+            <li><b>清早</b> 出发浑源（约 1.5 小时），先登悬空寺避开人流</li>
+            <li><b>上午</b> 恒山景区，或只看金龙峡</li>
+            <li><b>中午</b> 浑源县城吃凉粉、莜面</li>
+            <li><b>下午</b> 转应县看木塔（约 1.5 小时车程），返大同</li>
+          </ol>
+        </div>
+      </div>
+      <p class="rt-note">※ 时间按常规路况估算；悬空寺登寺需另购票且限流，节假日建议提前预约。应县木塔属朔州市，行程上算"大同周边"。</p>
+    </div>
+  </section>
+
+  <!-- CLOSING -->
+  <section class="closing">
+    <div class="kicker">A LIVING HERITAGE</div>
+    <h2>石头会老，<br>日子还在过。</h2>
+    <p>佛像的鼻子被风磨平了，城墙是新修的，面馆的锅还是那口锅。<br>五千年不是陈列柜里的年份，是今天早上七点，门口那碗面冒的热气。</p>
+    <p class="eval">期待你的评价</p>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="f-brand">五千年文化 · 山西大同</div>
+      <div>图片：Wikimedia Commons（CC0 / CC BY / CC BY-SA）　文字整理：本地资料与公开史料</div>
+    </div>
+    <div class="foot-cols">
+      <div>
+        <strong>摄影与授权</strong>
+        云冈石窟 Felix Andrews（CC BY-SA 3.0）、Dudva（CC0）；悬空寺 Charlie fong（CC BY-SA 4.0）；应县木塔 Charlie fong（CC BY-SA 4.0）；华严寺 Dudva（CC0）；大同城墙、九龙壁 xiquinhosilva（CC BY 4.0 / CC BY 2.0）；善化寺 Zhangzhugang（CC BY-SA 3.0）；刀削面 齐健（CC BY 2.0）；羊杂割 AddisWang（CC BY-SA 3.0）；烧麦、凉粉 N509FZ（CC BY-SA 4.0）；莜面 Popolon（CC BY-SA 4.0）；社火 Gene（CC BY 2.5）。
+      </div>
+      <div>
+        <strong>资料来源</strong>
+        <a href="https://www.yungang.org/" target="_blank" rel="noopener">云冈研究院</a> ·
+        <a href="https://whc.unesco.org/zh/list/1039" target="_blank" rel="noopener">UNESCO 世界遗产 · 云冈石窟</a> ·
+        <a href="https://www.dt.gov.cn/" target="_blank" rel="noopener">大同市人民政府</a> ·
+        中国非物质文化遗产网。年代、尺寸取通行说法，传说部分已标注"相传"。
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="图片查看">
+  <button class="lb-close" id="lbClose" aria-label="关闭">✕</button>
+  <div>
+    <img id="lbImg" alt="">
+    <div class="lb-cap" id="lbCap"></div>
+  </div>
+</div>
+<button class="top" id="toTop" aria-label="回到顶部">↑</button>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var progress = document.getElementById('progress');
+  var toTop = document.getElementById('toTop');
+
+  /* nav 状态 + 进度条 */
+  function onScroll() {
+    var y = window.scrollY || document.documentElement.scrollTop;
+    nav.classList.toggle('solid', y > window.innerHeight * 0.72);
+    toTop.classList.toggle('on', y > 900);
+    var h = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.width = (h > 0 ? (y / h) * 100 : 0) + '%';
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+  toTop.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+  /* 首屏视差 */
+  var heroImg = document.querySelector('.hero-media img');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (heroImg && !reduce) {
+    var ticking = false;
+    window.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(function () {
+        var y = window.scrollY;
+        if (y < window.innerHeight * 1.2) {
+          heroImg.style.transform = 'translate3d(0,' + (y * 0.16) + 'px,0) scale(1.05)';
+        }
+        ticking = false;
+      });
+    }, { passive: true });
+  }
+
+  /* 入场动画 */
+  var rvs = document.querySelectorAll('.rv');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -8% 0px' });
+    rvs.forEach(function (el) { io.observe(el); });
+  } else {
+    rvs.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* 时间轴筛选 */
+  var chips = document.querySelectorAll('.chip');
+  var items = document.querySelectorAll('.tl-item');
+  chips.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      chips.forEach(function (b) { b.classList.remove('on'); });
+      btn.classList.add('on');
+      var f = btn.dataset.era;
+      items.forEach(function (it) {
+        it.classList.toggle('dim', f !== 'all' && it.dataset.era !== f);
+      });
+    });
+  });
+
+  /* 导航高亮 */
+  var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
+  var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
+  if ('IntersectionObserver' in window) {
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.classList.remove('on'); });
+        var i = sections.indexOf(e.target);
+        if (i > -1) links[i].classList.add('on');
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(function (s) { if (s) spy.observe(s); });
+  }
+
+  /* 图片查看 */
+  var lb = document.getElementById('lb');
+  var lbImg = document.getElementById('lbImg');
+  var lbCap = document.getElementById('lbCap');
+  var lastFocus = null;
+
+  function openLb(src, cap, credit) {
+    lastFocus = document.activeElement;
+    lbImg.src = src;
+    lbImg.alt = cap || '';
+    lbCap.textContent = '';
+    var b = document.createElement('b');
+    b.textContent = cap || '';
+    lbCap.appendChild(b);
+    if (credit) {
+      var s = document.createElement('small');
+      s.textContent = credit;
+      lbCap.appendChild(s);
+    }
+    lb.classList.add('on');
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lbClose').focus();
+  }
+  function closeLb() {
+    lb.classList.remove('on');
+    lbImg.removeAttribute('src');
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+  document.querySelectorAll('[data-lb]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      openLb(el.dataset.lb, el.dataset.cap, el.dataset.credit);
+    });
+    el.setAttribute('tabindex', '0');
+    el.setAttribute('role', 'button');
+    el.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Enter' || ev.key === ' ') {
+        ev.preventDefault();
+        openLb(el.dataset.lb, el.dataset.cap, el.dataset.credit);
+      }
+    });
+  });
+  document.getElementById('lbClose').addEventListener('click', closeLb);
+  lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && lb.classList.contains('on')) closeLb();
+  });
+})();
+</script>
+</body>
+</html>
