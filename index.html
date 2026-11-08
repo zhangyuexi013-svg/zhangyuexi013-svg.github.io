@@ -53,7 +53,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .hero::after{content:"";position:absolute;inset:0;background:
   linear-gradient(180deg,rgba(10,15,11,.55) 0%,rgba(10,15,11,.05) 32%,rgba(10,15,11,.34) 62%,rgba(9,14,10,.9) 100%),
   linear-gradient(100deg,rgba(9,14,10,.72) 0%,rgba(9,14,10,.18) 52%,rgba(9,14,10,.28) 100%);pointer-events:none}
-.hero-inner{position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 232px;align-items:end;gap:44px;
+.hero-inner{position:relative;z-index:2;width:100%;max-width:1240px;margin:0 auto;display:grid;grid-template-columns:1fr;align-items:end;
   padding:0 clamp(22px,6vw,86px) clamp(116px,14vh,148px)}
 .eyebrow{display:flex;align-items:center;gap:12px;font-size:10.5px;letter-spacing:.3em;color:#e2c08c}
 .eyebrow::before{content:"";width:34px;height:1px;background:currentColor;opacity:.8}
@@ -61,12 +61,6 @@ h1{font-family:var(--serif);font-weight:500;font-size:clamp(56px,10vw,142px);lin
 h1 .accent{color:#e3c08a}
 .hero-sub{font-family:var(--serif);font-size:clamp(17px,1.9vw,24px);letter-spacing:.1em;margin:20px 0 0;color:#f2ead9}
 .hero-copy{margin:20px 0 0;max-width:470px;font-size:13.5px;line-height:2.15;color:rgba(247,242,230,.8)}
-.hero-card{background:rgba(16,22,17,.42);border:1px solid rgba(247,242,230,.22);padding:11px;backdrop-filter:blur(8px)}
-.hero-card img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .6s ease}
-.hero-card:hover img{transform:scale(1.04)}
-.hero-card .hc-cap{padding:11px 3px 3px}
-.hero-card b{display:block;font-family:var(--serif);font-size:14px;letter-spacing:.12em;font-weight:500}
-.hero-card span{display:block;font-size:10px;letter-spacing:.14em;color:rgba(247,242,230,.62);margin-top:4px}
 .hero-bar{position:absolute;z-index:2;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:16px;
   padding:16px clamp(22px,6vw,86px);border-top:1px solid rgba(247,242,230,.18);font-size:9.5px;letter-spacing:.22em;color:rgba(247,242,230,.66);text-transform:uppercase}
 .hero-bar .scroll{display:inline-flex;align-items:center;gap:8px}
@@ -257,8 +251,7 @@ footer strong{color:#d8d0bb;font-weight:500;letter-spacing:.1em;font-size:10px;d
 
 /* ---------- responsive ---------- */
 @media (max-width:1024px){
-  .hero-inner{grid-template-columns:1fr;gap:26px;padding-bottom:110px}
-  .hero-card{display:none}
+  .hero-inner{grid-template-columns:1fr;padding-bottom:110px}
   .head{grid-template-columns:1fr;gap:16px}
   .head-desc{justify-self:start}
   .prologue-grid,.build,.food-hero,.folk-body,.rt-grid{grid-template-columns:1fr;gap:28px}
@@ -332,10 +325,6 @@ footer strong{color:#d8d0bb;font-weight:500;letter-spacing:.1em;font-size:10px;d
         <p class="hero-sub">一半是石头，一半是烟火</p>
         <p class="hero-copy">桑干河畔的第一堆火，白登山上的一场大雪，北魏都城的十万锤凿，城墙根下的一碗热汤——都还在这座城里。</p>
       </div>
-      <figure class="hero-card" data-lb="assets/xuankong.jpg" data-cap="悬空寺 · 恒山金龙峡" data-credit="摄影 Charlie fong / Wikimedia Commons, CC BY-SA 4.0">
-        <img src="assets/xuankong.jpg" alt="悬空寺贴在恒山崖壁上，木构殿阁由横梁插入岩体支撑" loading="lazy">
-        <div class="hc-cap"><b>悬空寺</b><span>恒山金龙峡 · 建于北魏</span></div>
-      </figure>
     </div>
     <div class="hero-bar">
       <span>山西省 · 大同市</span>
