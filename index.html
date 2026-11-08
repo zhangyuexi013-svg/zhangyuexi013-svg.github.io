@@ -46,7 +46,10 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 /* ---------- hero ---------- */
 .hero{position:relative;min-height:640px;height:100svh;display:flex;align-items:flex-end;overflow:hidden;background:#11170f;color:#f7f2e6}
 .hero-media{position:absolute;inset:0;overflow:hidden}
-.hero-media img{width:100%;height:100%;object-fit:cover;object-position:50% 42%;transform:scale(1.05);will-change:transform}
+.hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%;transform:scale(1.05);will-change:transform,opacity;animation:heroRot 24s ease-in-out infinite}
+.hero-media img:nth-child(2){animation-delay:-8s;object-position:50% 58%}
+.hero-media img:nth-child(3){animation-delay:-16s;object-position:50% 62%}
+@keyframes heroRot{0%{opacity:1}30%{opacity:1}33%{opacity:0}94%{opacity:0}100%{opacity:1}}
 .hero::after{content:"";position:absolute;inset:0;background:
   linear-gradient(180deg,rgba(10,15,11,.55) 0%,rgba(10,15,11,.05) 32%,rgba(10,15,11,.34) 62%,rgba(9,14,10,.9) 100%),
   linear-gradient(100deg,rgba(9,14,10,.72) 0%,rgba(9,14,10,.18) 52%,rgba(9,14,10,.28) 100%);pointer-events:none}
@@ -217,6 +220,16 @@ h2.title{font-family:var(--serif);font-weight:500;font-size:clamp(27px,3.5vw,44p
 .closing .eval{position:relative;margin:34px auto 0;padding-top:24px;font-family:var(--serif);font-size:clamp(16px,1.7vw,20px);letter-spacing:.3em;color:#f7e8cf;max-width:520px}
 .closing .eval::before{content:"";position:absolute;left:50%;top:0;transform:translateX(-50%);width:48px;height:1px;background:rgba(248,242,228,.5)}
 
+/* ---------- journal / 学习记录 ---------- */
+.journal{background:rgba(61,77,63,.045);border-top:1px solid var(--line)}
+.jrnl-list{list-style:none;margin:34px 0 0;padding:0;max-width:820px}
+.jrnl-list li{display:grid;grid-template-columns:104px 1fr;gap:20px;align-items:baseline;padding:17px 0;border-top:1px dashed rgba(27,33,28,.2)}
+.jrnl-list li:first-child{border-top:1px solid rgba(27,33,28,.24)}
+.jrnl-date{font-family:var(--serif);font-size:12px;letter-spacing:.08em;color:var(--rust)}
+.jrnl-list p{font-size:13px;line-height:2.05;color:var(--body);margin:0}
+.jrnl-list .jrnl-new{color:var(--rust);font-weight:600}
+@media(max-width:640px){.jrnl-list li{grid-template-columns:1fr;gap:5px}}
+
 /* ---------- footer ---------- */
 footer{background:#161d18;color:#94a094;padding:clamp(30px,4vw,44px) clamp(22px,6vw,86px);font-size:10.5px;line-height:2}
 .foot-top{display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid rgba(246,241,231,.12)}
@@ -261,7 +274,7 @@ footer strong{color:#d8d0bb;font-weight:500;letter-spacing:.1em;font-size:10px;d
 }
 @media (max-width:640px){
   .nav{height:62px;padding:0 18px}
-  .nav-links{font-size:9.5px;gap:11px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;max-width:62%}
+  .nav-links{font-size:9.5px;gap:11px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;min-width:0;max-width:62%}
   .nav-links::-webkit-scrollbar{display:none}
   .nav-links a{white-space:nowrap}
   .brand{font-size:13px;letter-spacing:.12em;gap:9px}
@@ -300,13 +313,18 @@ footer strong{color:#d8d0bb;font-weight:500;letter-spacing:.1em;font-size:10px;d
     <a href="#relics">遗珍</a>
     <a href="#food">味道</a>
     <a href="#folk">风土</a>
+    <a href="#journal">学习记录</a>
   </nav>
 </header>
 
 <main>
   <!-- HERO -->
   <section class="hero" id="top">
-    <div class="hero-media"><img src="assets/yungang.jpg" alt="云冈石窟第20窟露天大佛，砂岩上雕刻的北魏佛像在午后阳光里" fetchpriority="high"></div>
+    <div class="hero-media">
+      <img src="assets/yungang.jpg" alt="云冈石窟第20窟露天大佛，砂岩上雕刻的北魏佛像在午后阳光里" fetchpriority="high">
+      <img src="assets/yingxian.jpg" alt="应县木塔，世界上现存最高的木结构楼阁式佛塔" loading="lazy">
+      <img src="assets/wall.jpg" alt="大同古城墙夜景，带状灯带勾勒出明代城垣轮廓" loading="lazy">
+    </div>
     <div class="hero-inner">
       <div>
         <div class="eyebrow">SHANXI · DATONG · 40°N</div>
@@ -708,6 +726,33 @@ footer strong{color:#d8d0bb;font-weight:500;letter-spacing:.1em;font-size:10px;d
         </div>
       </div>
       <p class="rt-note">※ 时间按常规路况估算；悬空寺登寺需另购票且限流，节假日建议提前预约。应县木塔属朔州市，行程上算"大同周边"。</p>
+    </div>
+  </section>
+
+  <!-- JOURNAL / 学习记录 -->
+  <section class="section journal" id="journal">
+    <div class="wrap">
+      <div class="head rv">
+        <div>
+          <div class="kicker">08 / 学习记录</div>
+          <h2 class="title">做一遍，<br>才算真的学会。</h2>
+        </div>
+        <p class="head-desc">这一页跟着网站一起长大：每次改完、上线完，就在这儿留一条。按时间倒着排，最新的一条在最上面。</p>
+      </div>
+      <ul class="jrnl-list rv">
+        <li>
+          <span class="jrnl-date">2026.11.09</span>
+          <p class="jrnl-new">我已经把网站代码放到 GitHub，并通过 github.io 更新。学会了用 Git 留存版本、用 SSH 密钥推代码、用 Pages 把 index.html 变成公开网址。</p>
+        </li>
+        <li>
+          <span class="jrnl-date">2026.11.09</span>
+          <p>首屏背景从单张大佛改成云冈大佛、应县木塔、大同城墙三张图轮播；顺便给「第一章」版本打了本地标签，知道了标签可以随时回到旧版本。</p>
+        </li>
+        <li>
+          <span class="jrnl-date">2026.10.27</span>
+          <p>整理大同五千年文化脉络，从维基共享资源找了 15 张 CC 授权照片，学会给每张素材标注摄影者和许可证，不把别人的图当自己的。</p>
+        </li>
+      </ul>
     </div>
   </section>
 
